@@ -5,3 +5,4 @@ def my_fun():
     print("t")
     print("a")
     print("t")
+    print
