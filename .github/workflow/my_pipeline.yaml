@@ -1,0 +1,20 @@
+name: my-pipeline
+
+on:
+  push:
+    tags:
+      - 'sandpit'
+      - 'prod'
+    branches:
+      - main
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
