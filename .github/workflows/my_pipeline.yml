@@ -3,8 +3,8 @@ name: my-pipeline
 on:
   push:
     tags:
-      - 'sandpit'
-      - 'prod'
+      - 'sandpit*'
+      - 'prod*'
 
 jobs:
   my-job:
