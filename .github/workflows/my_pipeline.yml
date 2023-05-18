@@ -2,17 +2,25 @@ name: my-pipeline
 
 on:
   push:
-    tags:
-      - 'sandpit*'
-      - 'prod*'
+    branches: main
+  pull_request:
+    branches: [main, dev, prod]
 
 jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
+
       - name: checkout code
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
           ref: ${{ github.ref }}
+
+      # Extract the current tag and set it as environment variable
+      - name: Extract tag
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF##*/})"
+
+      - name: Print Branch name
+        run: echo 'The branch Name is' $BRANCH_NAME
 
