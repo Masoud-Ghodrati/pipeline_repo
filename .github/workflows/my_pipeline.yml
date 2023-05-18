@@ -21,9 +21,17 @@ jobs:
       # - name: Extract tag
       #   run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF})"
 
-      - name: Print Branch name
+      # - name: Print Branch name
+      #   run: |
+      #       echo "$BRANCH_NAME"
+      #   env:
+      #     BRANCH_NAME: "${{github.base_ref}}"
+      - name: If branch name is main
+        if: ${{ github.base_ref == 'main' }}
         run: |
-            echo "$BRANCH_NAME"
-        env:
-          BRANCH_NAME: "${{github.base_ref}}"
+          echo 'main'
 
+      - name: If branch name is dev
+        if: ${{ github.base_ref == 'dev' }}
+        run: |
+          echo 'dev'
