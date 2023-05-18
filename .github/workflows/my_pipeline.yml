@@ -17,23 +17,36 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref }}
 
+      # This step stops the pipeline if the target branch is not main, dev, prod
+      - name: Invalid tag
+        if:  (! ${{ github.base_ref == 'main' }}) || (! ${{ github.base_ref == 'prod' }}) || (! ${{ github.base_ref == 'dev' }})
+        run: |
+          echo "The pipeline will get triggered only if pull request is made to one of these branches: 'sandpit', 'dev'"
+          exit 1
+
       - name: If branch name is main
         if: ${{ github.base_ref == 'main' }}
         run: |
+          echo "branch_name=${{ github.base_ref }}" >> "$GITHUB_ENV"
+          echo "branch_secret=main-123" >> "$GITHUB_ENV"
           echo 'main'
-          echo ${{ github.base_ref }}
-          echo '${{ github.base_ref }}'
           
       - name: If branch name is dev
         if: ${{ github.base_ref == 'dev' }}
         run: |
+          echo "branch_name=${{ github.base_ref }}" >> "$GITHUB_ENV"
+          echo "branch_secret=dec-123" >> "$GITHUB_ENV"
           echo 'dev'
-          echo ${{ github.base_ref }}
-          echo '${{ github.base_ref }}'
 
       - name: If branch name is prod
         if: ${{ github.base_ref == 'prod' }}
         run: |
+          echo "branch_name=${{ github.base_ref }}" >> "$GITHUB_ENV"
+          echo "branch_secret=prod-123" >> "$GITHUB_ENV"
           echo 'prod'
-          echo ${{ github.base_ref }}
-          echo '${{ github.base_ref }}'
+
+      - name: Run the stuff
+        run: |
+          echo "${{ env.branch_name }}"
+          echo "${{ env.branch_secret }}"
+
