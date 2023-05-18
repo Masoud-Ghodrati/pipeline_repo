@@ -30,8 +30,12 @@ jobs:
         if: ${{ github.base_ref == 'main' }}
         run: |
           echo 'main'
-
+          echo ${{ github.base_ref }}
+          echo '${{ github.base_ref }}'
+          
       - name: If branch name is dev
         if: ${{ github.base_ref == 'dev' }}
         run: |
           echo 'dev'
+          echo ${{ github.base_ref }}
+          echo '${{ github.base_ref }}'
