@@ -24,7 +24,7 @@ jobs:
 
       # This step stops the pipeline if the target branch is not main, dev, prod
       - name: Invalid tag
-        if:  ! (${{ github.base_ref == 'main' }} ||  ${{ github.base_ref == 'prod' }} ||  ${{ github.base_ref == 'dev' }})
+        if:  (! (${{ github.base_ref == 'main' }} ||  ${{ github.base_ref == 'prod' }} ||  ${{ github.base_ref == 'dev' }}))
         run: |
           echo "The pipeline will get triggered only if pull request is made to one of these branches: 'sandpit', 'dev'"
           exit 1
