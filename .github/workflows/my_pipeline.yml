@@ -43,6 +43,6 @@ jobs:
       - name: If branch name is prod
         if: ${{ github.base_ref == 'prod' }}
         run: |
-          echo 'dev'
+          echo 'prod'
           echo ${{ github.base_ref }}
           echo '${{ github.base_ref }}'
