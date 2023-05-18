@@ -17,6 +17,13 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref }}
 
+      # This step stops the pipeline if current Tag doesn't contain 'staging' or 'production'
+      - name: Invalid tag
+        if:  (! ${{ github.base_ref == 'main' }}) || (! ${{ github.base_ref == 'prod' }}) || (! ${{ github.base_ref == 'dev' }})
+        run: |
+          echo "The pipeline will get triggered only if pull request is made to one of these branches: 'sandpit', 'dev'"
+          exit 1
+
       - name: If branch name is main
         if: ${{ github.base_ref == 'main' }}
         run: |
