@@ -23,8 +23,7 @@ jobs:
 
       - name: Print Branch name
         run: |
-            pwd
-            echo $BRANCH_NAME
+            echo "$BRANCH_NAME"
         env:
           BRANCH_NAME: "${{github.base_ref}}"
 
