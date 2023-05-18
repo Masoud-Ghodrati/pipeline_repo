@@ -14,8 +14,9 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-          ref: ${{ github.ref }}
+          # fetch-depth: 0
+          # ref: ${{ github.ref }}
+          persist-credentials: true
 
       # This step stops the pipeline if the target branch is not main, dev, prod
       # - name: Invalid tag
