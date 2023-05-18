@@ -2,17 +2,47 @@ name: my-pipeline
 
 on:
   push:
-    tags:
-      - 'sandpit*'
-      - 'prod*'
+    branches: main
+  pull_request:
+    branches: [main, dev, prod]
 
 jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
+
       - name: checkout code
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
           ref: ${{ github.ref }}
 
+      # Extract the current tag and set it as environment variable
+      # - name: Extract tag
+      #   run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF})"
+
+      # - name: Print Branch name
+      #   run: |
+      #       echo "$BRANCH_NAME"
+      #   env:
+      #     BRANCH_NAME: "${{github.base_ref}}"
+      - name: If branch name is main
+        if: ${{ github.base_ref == 'main' }}
+        run: |
+          echo 'main'
+          echo ${{ github.base_ref }}
+          echo '${{ github.base_ref }}'
+          
+      - name: If branch name is dev
+        if: ${{ github.base_ref == 'dev' }}
+        run: |
+          echo 'dev'
+          echo ${{ github.base_ref }}
+          echo '${{ github.base_ref }}'
+
+      - name: If branch name is prod
+        if: ${{ github.base_ref == 'prod' }}
+        run: |
+          echo 'dev'
+          echo ${{ github.base_ref }}
+          echo '${{ github.base_ref }}'
