@@ -19,7 +19,7 @@ jobs:
 
       # Extract the current tag and set it as environment variable
       - name: Extract tag
-        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF##*/})"
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF})"
 
       - name: Print Branch name
         run: echo 'The branch Name is' $BRANCH_NAME
