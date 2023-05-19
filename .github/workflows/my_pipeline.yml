@@ -8,7 +8,7 @@ on:
 
 jobs:
   my-job:
-    # if: ${{ ! contains(github.head_ref, 'feat') }}
+    if: ${{ ! contains(github.event.head_commit.message, 'doc:') }}
     runs-on: ubuntu-latest
     
     steps:
