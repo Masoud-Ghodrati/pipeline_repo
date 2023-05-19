@@ -8,9 +8,8 @@ on:
 
 jobs:
   my-job:
+    if: ${{ ! contains('feat', github.head_ref) }}
     runs-on: ubuntu-latest
-    if: ! contains('feat', github.ref)
-    
     
     steps:
 
