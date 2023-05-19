@@ -9,6 +9,8 @@ on:
 jobs:
   my-job:
     runs-on: ubuntu-latest
+    
+    if: ! contains(fromJson('["feat/", "doc/"]'), github.head_ref)
     steps:
 
       - name: checkout code
