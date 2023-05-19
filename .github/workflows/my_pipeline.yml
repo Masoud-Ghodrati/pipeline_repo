@@ -51,4 +51,5 @@ jobs:
         run: |
           echo "${{ env.branch_name }}"
           echo "${{ env.branch_secret }}"
+          echo "${{ github.head_ref }}"
 
