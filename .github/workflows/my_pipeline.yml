@@ -1,14 +1,14 @@
 name: my-pipeline
 
 on:
-  push:
-    branches: main
+  # push:
+  #   branches: main
   pull_request:
     branches: [main, dev, prod]
 
 jobs:
   my-job:
-    if: ${{ ! contains(github.event.head_commit.message, 'doc:') }}
+    # if: ${{ ! contains(github.event.head_commit.message, 'doc:') }}
     runs-on: ubuntu-latest
     
     steps:
@@ -23,6 +23,7 @@ jobs:
       - name: Print Branch Name
         run: |
           echo ${{ github.base_ref }}
+          echo ${{ github.event.pull_request.comments }}
 
 
 
