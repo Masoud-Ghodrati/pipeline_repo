@@ -25,6 +25,12 @@ jobs:
       # check installed python version
       - name: Check python version
         run: python --version
+
+      # install terraform
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.14.7
     
   DeployDev:
     name: Deploy to Dev 
@@ -41,6 +47,9 @@ jobs:
       # check python verison
       - name: Check python version
         run: python --version
+
+      # check terraform version
+      
     
 
   DeployStaging:
