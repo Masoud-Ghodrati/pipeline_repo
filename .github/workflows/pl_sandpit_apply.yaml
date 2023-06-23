@@ -27,5 +27,5 @@ jobs:
             # set up env name to sandpit
             - name: Set up env name
               run: |
-                  echo "env_name: sandpit" >> ${{ github.workspace }}/${{ github.event.inputs.config_path }}
+                  echo "env_name: sandpit" 
             

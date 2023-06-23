@@ -28,5 +28,5 @@ jobs:
             # set up env name to dev
             - name: Set up env name
               run: |
-                  echo "env_name: dev" >> ${{ github.workspace }}/${{ github.event.inputs.config_path }}
+                  echo "env_name: dev" 
             
