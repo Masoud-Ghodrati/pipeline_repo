@@ -37,6 +37,10 @@ jobs:
     steps:
       - name: Deploy
         run: echo I am deploying! 
+
+      # check python verison
+      - name: Check python version
+        run: python --version
     
 
   DeployStaging:
