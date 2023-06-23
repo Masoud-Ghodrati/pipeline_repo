@@ -49,7 +49,9 @@ jobs:
         run: python --version
 
       # check terraform version
-      
+      - name: Check terraform version
+        run: terraform --version
+
     
 
   DeployStaging:
