@@ -1,8 +1,10 @@
 # a logger module to log the process and error messages and save the log file.
 import logging
 
+
 class Logger():
-    """s
+    """
+    Create logger class to log the information, and save the log file
     Create logger class to log the information, and save the log file"""
     def __init__(self, log_file: str, log_level: str = "INFO"):
         """
