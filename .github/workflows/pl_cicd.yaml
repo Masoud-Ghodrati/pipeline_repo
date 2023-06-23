@@ -1,0 +1,29 @@
+# call reusable workflow on push and pull request events to main branch
+name: PL CICD
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+    Build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+    
+          - name: Compile
+            run: echo Hello, world!
+
+    call-sandpit-apply:
+        if: github.event_name == 'pull_request'
+        needs: [Build]
+        uses: ./.github/workflows/pl_sandpit_apply.yml
+
+    
+    call-dev-apply:
+        if: github.event.ref == 'refs/heads/main'
+        needs: [call-sandpit-apply]
+        uses: ./.github/workflows/pl_dev_apply.yml

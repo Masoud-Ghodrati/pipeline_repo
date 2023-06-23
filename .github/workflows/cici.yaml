@@ -15,6 +15,22 @@ jobs:
 
       - name: Compile
         run: echo Hello, world!
+
+      # use python 3.8
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      # check installed python version
+      - name: Check python version
+        run: python --version
+
+      # install terraform
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.14.7
     
   DeployDev:
     name: Deploy to Dev 
@@ -27,8 +43,17 @@ jobs:
     steps:
       - name: Deploy
         run: echo I am deploying! 
+
+      # check python verison
+      - name: Check python version
+        run: python --version
+
+      # check terraform version
+      - name: Check terraform version
+        run: terraform --version
+
     
-        
+
   DeployStaging:
     name: Deploy to Staging 
     if: github.event.ref == 'refs/heads/main'
