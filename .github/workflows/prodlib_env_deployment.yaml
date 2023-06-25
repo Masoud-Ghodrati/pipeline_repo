@@ -27,8 +27,9 @@ jobs:
         # get environment variables from the environment
         env:
             ENV_NAME: ${{ vars.name }}
-            # get password from the environment
             ENV_PASSWORD: ${{ secrets.ENV_PASSWORD }}
+        # run only if environment is only Sandpit, or Development or Production
+        if: ${{ inputs.env_name == 'Sandpit' || inputs.env_name == 'Development' || inputs.env_name == 'Production' }}
 
         steps:
             - uses: actions/checkout@v2
@@ -42,4 +43,5 @@ jobs:
             - name: Print env variables
               run: |
                   echo $ENV_NAME
+                  echo $ENV_PASSWORD
             
