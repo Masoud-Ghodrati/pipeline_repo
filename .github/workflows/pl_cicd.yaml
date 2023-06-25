@@ -28,7 +28,15 @@ jobs:
     
     call-dev-apply:
         if: github.event.ref == 'refs/heads/main'
-        needs: [call-sandpit-apply]
+        needs: [Build]
         uses: ./.github/workflows/pl_dev_apply.yaml
         with:
             env_name: 'Staging'
+    
+    call-prod-apply:
+        if: github.event.ref == 'refs/heads/main'
+        needs: [call-dev-apply]
+        uses: ./.github/workflows/pl_dev_apply.yaml
+        with:
+            env_name: 'Production'
+        
