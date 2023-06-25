@@ -23,7 +23,7 @@ jobs:
         needs: [Build]
         uses: ./.github/workflows/prodlib_env_deployment.yaml
         with:
-            env_name: 'Sandpitr'
+            env_name: 'Sandpit'
 
     
     Dev-apply:
