@@ -4,18 +4,26 @@ name: PL Dev Apply
 on:
     workflow_call:
         inputs:
-            config_path:
-                description: 'Path to the config file'
+            env_name:
+                description: 'Environment name'
                 required: true
+                default: 'Development'
                 type: string
-                default: './config.yaml'
 
 jobs:
     bulid:
         runs-on: ubuntu-latest
         environment: 
-            name: Staging
-            url: 'http://test.myapp.com'
+            # get the env name from the input
+            name: ${{ inputs.env_name }}
+            url: 'http://${{ inputs.env_name }}.example.com'
+        
+        # get environment variables from the environment
+        env:
+            ENV_NAME: ${{ vars.name }}
+            ENV_URL: ${{ vars.url }}
+            # get password from the environment
+            ENV_PASSWORD: ${{ secrets.ENV_PASSWORD }}
 
         steps:
             - uses: actions/checkout@v2
@@ -25,8 +33,9 @@ jobs:
             - name: Run python script
               run: |
                   python --version
-            # set up env name to dev
-            - name: Set up env name
+            
+            - name: Print env variables
               run: |
-                  echo "env_name: dev" 
+                  echo $ENV_NAME
+                  echo $ENV_URL
             

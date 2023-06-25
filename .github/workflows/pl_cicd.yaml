@@ -21,9 +21,9 @@ jobs:
     call-sandpit-apply:
         if: github.event_name == 'pull_request'
         needs: [Build]
-        uses: ./.github/workflows/pl_sandpit_apply.yaml
+        uses: ./.github/workflows/pl_dev_apply.yaml
         with:
-            config_path: './config.yaml'
+            env_name: 'Development'
 
     
     call-dev-apply:
@@ -31,4 +31,4 @@ jobs:
         needs: [call-sandpit-apply]
         uses: ./.github/workflows/pl_dev_apply.yaml
         with:
-          config_path: './config.yaml'
+            env_name: 'Staging'
