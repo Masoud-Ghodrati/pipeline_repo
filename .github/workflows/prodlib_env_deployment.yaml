@@ -1,27 +1,32 @@
-# create a reusable workflow that has paython installed and can be used to run python scripts.
-name: PL Dev Apply
+# This reusable workflow is used to deploy the product library to the specified environments
+# The environment name is passed as an input to the workflow, the environment name is one of the following: 
+#   - Standpit
+#   - Development
+#   - Production
+# All the environment variables and secrets are stored in the corresponding environment and are retrieved from the environment
+
+name: Product Library Deployment
 
 on:
+    # workflow is call inside another workflow
     workflow_call:
         inputs:
             env_name:
                 description: 'Environment name'
                 required: true
-                default: 'Development'
+                default: 'Sandpit' # default value if not provided
                 type: string
 
 jobs:
-    bulid:
+    Terraform_Apply:
         runs-on: ubuntu-latest
         environment: 
             # get the env name from the input
             name: ${{ inputs.env_name }}
-            url: 'http://${{ inputs.env_name }}.example.com'
         
         # get environment variables from the environment
         env:
             ENV_NAME: ${{ vars.name }}
-            ENV_URL: ${{ vars.url }}
             # get password from the environment
             ENV_PASSWORD: ${{ secrets.ENV_PASSWORD }}
 
@@ -37,5 +42,4 @@ jobs:
             - name: Print env variables
               run: |
                   echo $ENV_NAME
-                  echo $ENV_URL
             

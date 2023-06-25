@@ -1,6 +1,6 @@
 # call reusable workflow on push and pull request events to main branch
 
-name: PL CICD
+name: Prodlib CI/CD
 on:
   push:
     branches:
@@ -18,25 +18,25 @@ jobs:
           - name: Compile
             run: echo Hello, world!
 
-    call-sandpit-apply:
+    Sandpit-apply:
         if: github.event_name == 'pull_request'
         needs: [Build]
-        uses: ./.github/workflows/pl_dev_apply.yaml
+        uses: ./.github/workflows/prodlib_env_deployment.yaml
         with:
-            env_name: 'Development'
+            env_name: 'Sandpit'
 
     
-    call-dev-apply:
+    Dev-apply:
         if: github.event.ref == 'refs/heads/main'
         needs: [Build]
-        uses: ./.github/workflows/pl_dev_apply.yaml
+        uses: ./.github/workflows/prodlib_env_deployment.yaml
         with:
             env_name: 'Staging'
     
-    call-prod-apply:
+    Prod-apply:
         if: github.event.ref == 'refs/heads/main'
-        needs: [call-dev-apply]
-        uses: ./.github/workflows/pl_dev_apply.yaml
+        needs: [ Dev-apply]
+        uses: ./.github/workflows/prodlib_env_deployment.yaml
         with:
             env_name: 'Production'
         
