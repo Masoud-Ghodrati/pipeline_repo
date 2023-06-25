@@ -15,13 +15,13 @@ jobs:
         runs-on: ubuntu-latest
         environment: 
             # get the env name from the input
-            name: ${{ github.event.inputs.env_name }}
-            url: 'http://${{ github.event.inputs.env_name }}.example.com'
+            name: ${{ inputs.env_name }}
+            url: 'http://${{ inputs.env_name }}.example.com'
         
         # get environment variables from the environment
         env:
-            ENV_NAME: ${{ github.event.environment.name }}
-            ENV_URL: ${{ github.event.environment.url }}
+            ENV_NAME: ${{ vars.name }}
+            ENV_URL: ${{ vars.url }}
             # get password from the environment
             ENV_PASSWORD: ${{ secrets.ENV_PASSWORD }}
 
