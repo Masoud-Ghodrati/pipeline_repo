@@ -25,7 +25,6 @@ jobs:
         with:
             env_name: 'Sandpit'
 
-    
     Dev-apply:
         if: github.event.ref == 'refs/heads/main'
         needs: [Build]
