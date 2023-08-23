@@ -1,6 +1,8 @@
-
 {
     "scripts": {
         "semantic-release": "semantic-release"
-  }
+    },
+    "devDependencies": {
+        "@semantic-release/gitlab": "^12.0.5"
+    }
 }
