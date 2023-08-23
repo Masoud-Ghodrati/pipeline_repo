@@ -33,4 +33,4 @@ jobs:
       - name: Semantic Release
         run: npx semantic-release --config .releaserc.json --debug
         env: 
-          GITHUB_TOKEN: ${{ secrets.GHB_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
