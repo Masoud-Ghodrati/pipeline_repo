@@ -1,15 +1,18 @@
 
 {
-    "scripts": {
+  "name": "your-package-name",
+  "version": "1.0.0",
+  "description": "Your package description",
+  "scripts": {
         "semantic-release": "semantic-release"
   },
-  "dependencies": {
-    "@actions/core": "1.9.1"
-  },
+  
   "devDependencies": {
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/commit-analyzer": "^10.0.1",
+    "@semantic-release/npm": "7.0.0",
     "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "8.0.6",
-    "esbuild": "0.15.10",
     "semantic-release": "19.0.5",
     "semantic-release-github-actions-tags": "1.0.3"
   }
