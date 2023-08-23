@@ -1,3 +1,4 @@
+const config = 
 {
   "branches": ["main"],
   "plugins": [
@@ -7,4 +8,6 @@
     "@semantic-release/github",
     "@semantic-release/git"
   ]
-}
+};
+
+module.exports = config;
