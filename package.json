@@ -1,18 +1,6 @@
 
 {
     "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "your-build-command",
-    "release": "semantic-release"
-  },
-  "dependencies": {
-    "@actions/core": "1.9.1"
-  },
-  "devDependencies": {
-    "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "8.0.6",
-    "esbuild": "0.15.10",
-    "semantic-release": "19.0.5",
-    "semantic-release-github-actions-tags": "1.0.3"
+        "semantic-release": "semantic-release"
   }
 }
