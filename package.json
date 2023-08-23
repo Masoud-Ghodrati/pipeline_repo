@@ -1,6 +1,9 @@
-"scripts": {
+
+{
+    "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "your-build-command",
     "release": "semantic-release"
   }
+}
   
