@@ -23,7 +23,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-          
+      
+      - name: Clear npm cache
+        run: - name: Clear npm cache
+        run: npm cache clean --force
+      
+        
       - name: Install Dependencies
         run: npm ci
           
